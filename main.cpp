@@ -35,26 +35,26 @@ int main()
 			c = OperationStack->Pull();
 			int op1;
 			int op2;
-			op1 = OperandStack->Pull();
-			op2 = OperandStack->Pull();
+			op1 = OperationStack->Pull();
+			op2 = OperationStack->Pull();
 			if (c == 'M') 
 			{
 				op1 = max(op1,op2);
 			}
-			else
+			else if (c == 'N')
 			{
 				op1 = min(op1, op2);
 			}
-			OperandStack->Push((op1));
+			OperationStack->Push((op1));
 			break;
 		default:
-			OperandStack->Push((int)c);
+			OperationStack->Push((int)c);
 			break;
 		}
 	}
 	file.close();
 	ofstream outfile("Output.txt");
-	outfile << OperandStack->Pull();
+	outfile << OperationStack->Pull();
 	outfile.close();
 	return 0;
 }
