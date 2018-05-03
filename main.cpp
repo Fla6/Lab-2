@@ -5,7 +5,6 @@
 #include <iostream>
 #include <fstream>
 #include <algorithm>
-#include <stdlib.h>
 
 using namespace std;
 
@@ -24,15 +23,15 @@ int main()
 		file >> c;
 		switch (c) {
 		case 'M':
-			OperationStack->Push('M');
+			OperandStack->Push('M');
 			break;
 		case 'N':
-			OperationStack->Push('N');
+			OperandStack->Push('N');
 			break;
 		case '(':
 			break;
 		case ')':
-			c = OperationStack->Pull();
+			c = OperandStack->Pull();
 			int op1;
 			int op2;
 			op1 = OperationStack->Pull();
@@ -56,5 +55,7 @@ int main()
 	ofstream outfile("Output.txt");
 	outfile << OperationStack->Pull();
 	outfile.close();
+	delete OperandStack;
+	delete OperationStack;
 	return 0;
 }
